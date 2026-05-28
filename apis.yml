@@ -1,0 +1,32 @@
+aid: datamuse
+name: Datamuse
+description: "Word-finding query engine"
+url: https://www.datamuse.com/api/
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Open Source Projects"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Open Source Projects
+  - Public APIs
+apis:
+  - name: Datamuse
+    description: "Word-finding query engine"
+    humanURL: https://www.datamuse.com/api/
+    baseURL: https://www.datamuse.com/api/
+    tags:
+      - Open Source Projects
+    properties:
+      - type: Documentation
+        url: https://www.datamuse.com/api/
+common:
+  - type: Website
+    url: https://www.datamuse.com/api/
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
