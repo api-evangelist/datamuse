@@ -1,0 +1,37 @@
+apiVersion: capability.naftiko.dev/v1alpha1
+kind: Capability
+metadata:
+  name: reverse-dictionary
+  provider: datamuse
+  description: |
+    Tip-of-the-tongue / reverse-dictionary lookup — given a description, phrase,
+    or definition, return the most likely words or short phrases that match.
+    Powers OneLook Thesaurus's flagship "describe a word" feature.
+spec:
+  uses:
+    - sharedCapability: datamuse-shared
+      operations: [getWords]
+  preconditions:
+    - description: Caller stays within the 100,000 requests/day free non-commercial quota or holds a commercial agreement.
+  workflow:
+    - step: queryMeansLike
+      operation: getWords
+      parameters:
+        ml: "{{ input.description }}"
+        topics: "{{ input.topics | optional }}"
+        max: "{{ input.max | default(20) }}"
+        md: "dps"
+    - step: refineWithSpellingHint
+      when: "input.spelledLike"
+      operation: getWords
+      parameters:
+        ml: "{{ input.description }}"
+        sp: "{{ input.spelledLike }}"
+        max: "{{ input.max | default(20) }}"
+        md: "dps"
+  outputs:
+    candidates: "{{ refineWithSpellingHint.body | default(queryMeansLike.body) }}"
+    bestGuess: "{{ (refineWithSpellingHint.body | default(queryMeansLike.body))[0].word }}"
+  governance:
+    minPlan: free-non-commercial
+    httpsRequired: false

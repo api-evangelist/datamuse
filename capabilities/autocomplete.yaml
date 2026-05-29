@@ -1,0 +1,30 @@
+apiVersion: capability.naftiko.dev/v1alpha1
+kind: Capability
+metadata:
+  name: autocomplete
+  provider: datamuse
+  description: |
+    Intelligent type-ahead for search bars, form fields, and chat composers.
+    Returns popularity-ranked completions for a partially-entered string with
+    automatic spelling correction and semantic fallback when no exact prefix
+    match is available.
+spec:
+  uses:
+    - sharedCapability: datamuse-shared
+      operations: [getSuggestions]
+  preconditions:
+    - description: Caller stays within the 100,000 requests/day free non-commercial quota or holds a commercial agreement.
+    - description: Debounce keystrokes client-side (recommended ~150ms) to avoid wasting the daily quota.
+  workflow:
+    - step: getSuggestions
+      operation: getSuggestions
+      parameters:
+        s: "{{ input.prefix }}"
+        max: "{{ input.max | default(10) }}"
+        v: "{{ input.vocabulary | default('en') }}"
+  outputs:
+    suggestions: "{{ getSuggestions.body }}"
+    topSuggestion: "{{ getSuggestions.body[0].word }}"
+  governance:
+    minPlan: free-non-commercial
+    httpsRequired: false

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/datamuse/json-schema/datamuse-suggestion-schema.json",
+  "title": "Datamuse Suggestion",
+  "description": "An autocomplete suggestion returned by the Datamuse /sug endpoint.",
+  "type": "object",
+  "required": ["word"],
+  "additionalProperties": false,
+  "properties": {
+    "word": {
+      "type": "string",
+      "description": "The suggested completion. May include a spelling correction or a semantically similar term when an exact prefix match is unavailable.",
+      "minLength": 1
+    },
+    "score": {
+      "type": "integer",
+      "description": "Popularity score; higher means more likely.",
+      "minimum": 0
+    }
+  }
+}

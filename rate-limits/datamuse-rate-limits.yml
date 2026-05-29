@@ -1,0 +1,68 @@
+name: Datamuse Rate Limits
+description: |
+  Request-rate, concurrency, and quota policies for the Datamuse API, captured
+  against the API Commons Rate Limits 0.1 specification.
+url: https://raw.githubusercontent.com/api-evangelist/datamuse/main/rate-limits/datamuse-rate-limits.yml
+created: '2026-05-29'
+modified: '2026-05-29'
+specificationVersion: '0.1'
+provider: datamuse
+
+scope: per-source-ip-or-account
+notes: |
+  Because no API key is required for the free non-commercial tier, Datamuse
+  enforces the 100,000 requests/day quota at the source-IP / network level.
+  Commercial customers are typically issued an account or key identifier and
+  receive negotiated quotas.
+
+quotas:
+  - plan: free-non-commercial
+    requests: 100000
+    window: day
+    enforcement: soft-stop
+    overageAllowed: false
+    notes: |
+      Once the daily quota is exhausted, subsequent requests may be rate-limited
+      without notice (HTTP 429 or upstream throttling). Quota resets on a
+      rolling 24-hour basis.
+  - plan: commercial
+    requests: null
+    window: negotiated
+    enforcement: negotiated
+    overageAllowed: true
+    notes: |
+      Negotiated as part of the commercial agreement. Typical commercial
+      deployments lift the per-IP throttle and instead apply per-account quotas
+      and SLA-backed burst limits.
+
+rateLimits:
+  perSecond:
+    notes: |
+      Datamuse does not publish a hard per-second throttle, but consumers running
+      against the free tier are expected to throttle reasonably and to back off
+      on HTTP 429.
+  perMinute:
+    notes: |
+      No documented per-minute cap on the free tier; commercial agreements may
+      include per-minute SLA bursting.
+  concurrency:
+    notes: |
+      Concurrency is not capped per request; quotas are enforced at the daily
+      aggregate level.
+
+responsePolicy:
+  exceededStatus: 429
+  exceededBody:
+    notes: |
+      Datamuse does not document a structured error envelope for rate limiting.
+      Clients should treat any HTTP 429 (or non-200 response after sustained
+      success) as a back-off signal and retry with exponential delay.
+  retryAfter:
+    header: Retry-After
+    notes: Datamuse may or may not return this header. Clients should default to a 60s back-off when absent.
+
+clientGuidance:
+  - Debounce keystrokes client-side before issuing /sug calls (recommended ~150ms).
+  - Cache lexical metadata (md=dpsrf) responses since they are stable per word.
+  - Use the `max` parameter to bound result-set size and reduce both bandwidth and quota churn.
+  - For high-volume production traffic, contact Datamuse to arrange commercial terms before scaling.

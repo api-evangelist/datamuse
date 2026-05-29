@@ -1,0 +1,43 @@
+{
+  "name": "DatamuseWord",
+  "description": "Structural overview of a Word object returned by the Datamuse /words endpoint.",
+  "version": "1.0.0",
+  "fields": [
+    {
+      "name": "word",
+      "type": "string",
+      "required": true,
+      "description": "The matched word or short phrase."
+    },
+    {
+      "name": "score",
+      "type": "integer",
+      "required": false,
+      "description": "Relationship-strength or popularity score within the result set."
+    },
+    {
+      "name": "numSyllables",
+      "type": "integer",
+      "required": false,
+      "description": "Syllable count, returned when the md=s metadata flag is requested."
+    },
+    {
+      "name": "tags",
+      "type": "array<string>",
+      "required": false,
+      "description": "Lexical tags (POS codes, pron:..., f:...) returned for requested metadata flags."
+    },
+    {
+      "name": "defs",
+      "type": "array<string>",
+      "required": false,
+      "description": "Definitions returned when md=d is requested; each entry is prefixed by its part-of-speech code."
+    },
+    {
+      "name": "defHeadword",
+      "type": "string",
+      "required": false,
+      "description": "Base headword form for inflected words."
+    }
+  ]
+}

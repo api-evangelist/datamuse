@@ -1,0 +1,118 @@
+name: Datamuse Plans and Pricing
+description: |
+  Commercial plan surface for the Datamuse word-finding API, captured against the
+  API Commons Plans 0.1 specification. Datamuse offers a generous free
+  non-commercial tier (100k requests/day, no API key) and a custom-priced
+  commercial tier negotiated directly with the provider for production / customer-
+  facing use cases, higher rate limits, and custom vocabularies.
+url: https://raw.githubusercontent.com/api-evangelist/datamuse/main/plans/datamuse-plans-pricing.yml
+created: '2026-05-29'
+modified: '2026-05-29'
+specificationVersion: '0.1'
+provider: datamuse
+currency: USD
+billingCycle: negotiated
+annualDiscount:
+  available: false
+  notes: |
+    Datamuse does not publish a standard commercial price list. Annual or
+    multi-year terms are part of the negotiated commercial agreement.
+
+plans:
+  - id: free-non-commercial
+    name: Free Non-Commercial
+    price: 0
+    interval: monthly
+    quota:
+      requests: 100000
+      window: day
+    refreshCadence: real-time
+    features:
+      - id: words-endpoint
+        included: true
+      - id: suggestions-endpoint
+        included: true
+      - id: semantic-constraints
+        included: true
+      - id: phonetic-constraints
+        included: true
+      - id: orthographic-constraints
+        included: true
+      - id: relation-constraints
+        included: true
+      - id: context-ranking
+        included: true
+      - id: metadata-flags
+        included: true
+      - id: english-vocabulary
+        included: true
+      - id: spanish-vocabulary
+        included: true
+      - id: custom-vocabulary
+        included: false
+        notes: Custom vocabularies are a commercial offering.
+      - id: api-key
+        included: false
+        notes: No API key required; access is anonymous.
+      - id: https
+        included: true
+      - id: commercial-use
+        included: false
+        notes: Free tier prohibits commercial / customer-facing use.
+    support: None
+    overage:
+      allowed: false
+      notes: Excess requests beyond 100,000/day may be rate-limited without notice.
+
+  - id: commercial
+    name: Commercial
+    price: null
+    interval: negotiated
+    quota:
+      requests: negotiated
+      window: negotiated
+    refreshCadence: real-time
+    features:
+      - id: words-endpoint
+        included: true
+      - id: suggestions-endpoint
+        included: true
+      - id: semantic-constraints
+        included: true
+      - id: phonetic-constraints
+        included: true
+      - id: orthographic-constraints
+        included: true
+      - id: relation-constraints
+        included: true
+      - id: context-ranking
+        included: true
+      - id: metadata-flags
+        included: true
+      - id: english-vocabulary
+        included: true
+      - id: spanish-vocabulary
+        included: true
+      - id: custom-vocabulary
+        included: true
+        notes: Domain-specific hosted vocabularies (medical, legal, gaming, internal jargon, etc.).
+      - id: api-key
+        included: true
+        notes: Issued as part of the commercial agreement when required.
+      - id: https
+        included: true
+      - id: commercial-use
+        included: true
+      - id: sla
+        included: true
+        notes: Service-level commitments per contract.
+    support: Direct
+    overage:
+      allowed: true
+      notes: Per-contract terms.
+
+contact:
+  url: https://www.datamuse.com/api/
+  notes: |
+    To arrange commercial use, custom vocabularies, or elevated rate limits,
+    contact Datamuse via the link on their API documentation page.

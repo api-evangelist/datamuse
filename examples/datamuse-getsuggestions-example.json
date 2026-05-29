@@ -1,0 +1,21 @@
+{
+  "operationId": "getSuggestions",
+  "request": {
+    "method": "GET",
+    "url": "https://api.datamuse.com/sug",
+    "queryParameters": {
+      "s": "rawn",
+      "max": 5
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      { "word": "prawn", "score": 1500 },
+      { "word": "drawn", "score": 1420 },
+      { "word": "brawny", "score": 980 },
+      { "word": "rawness", "score": 760 },
+      { "word": "crawl", "score": 540 }
+    ]
+  }
+}

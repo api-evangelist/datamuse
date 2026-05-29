@@ -1,0 +1,48 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "datamuse": "https://api.datamuse.com/vocab#",
+    "schema": "https://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "lexinfo": "http://www.lexinfo.net/ontology/3.0/lexinfo#",
+    "ontolex": "http://www.w3.org/ns/lemon/ontolex#",
+    "Word": "datamuse:Word",
+    "Suggestion": "datamuse:Suggestion",
+    "word": {
+      "@id": "ontolex:writtenRep",
+      "@type": "xsd:string"
+    },
+    "score": {
+      "@id": "datamuse:score",
+      "@type": "xsd:integer"
+    },
+    "numSyllables": {
+      "@id": "datamuse:numSyllables",
+      "@type": "xsd:integer"
+    },
+    "tags": {
+      "@id": "datamuse:tag",
+      "@container": "@set"
+    },
+    "defs": {
+      "@id": "skos:definition",
+      "@container": "@set"
+    },
+    "defHeadword": {
+      "@id": "datamuse:defHeadword",
+      "@type": "xsd:string"
+    },
+    "partOfSpeech": "lexinfo:partOfSpeech",
+    "pronunciation": "ontolex:phoneticRep",
+    "synonym": "skos:related",
+    "antonym": "datamuse:antonym",
+    "hypernym": "skos:broader",
+    "hyponym": "skos:narrower",
+    "holonym": "datamuse:holonym",
+    "meronym": "datamuse:meronym",
+    "rhyme": "datamuse:rhyme",
+    "homophone": "datamuse:homophone",
+    "trigger": "datamuse:trigger",
+    "vocabulary": "datamuse:vocabulary"
+  }
+}

@@ -1,0 +1,103 @@
+extends:
+  - spectral:oas
+rules:
+  # Every operation must have an operationId
+  datamuse-operation-id-required:
+    description: Every operation must have a non-empty operationId.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+
+  datamuse-operation-id-camel-case:
+    description: operationId values must be lowerCamelCase.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  # Every operation must have a summary in Title Case
+  datamuse-operation-summary-required:
+    description: Every operation must have a summary.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: summary
+      function: truthy
+
+  datamuse-operation-summary-title-case:
+    description: Operation summaries must use Title Case.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][a-zA-Z0-9]*)( ([A-Z][a-zA-Z0-9]*|of|to|for|in|on|by|the|and|or|a|an))*$"
+
+  # Every operation must have a description
+  datamuse-operation-description-required:
+    description: Every operation must have a description.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: description
+      function: truthy
+
+  # Every operation must reference at least one global tag
+  datamuse-operation-tags-required:
+    description: Every operation must declare at least one tag.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+
+  # Datamuse uses lowercase, dotless query parameter names (e.g. ml, sp, rel_jja, qe)
+  datamuse-query-parameter-naming:
+    description: Query parameters must be lowercase and use snake_case for compound names (rel_jja, rel_rhy, etc.).
+    severity: warn
+    given: $.paths[*][get].parameters[?(@.in == 'query')].name
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-z0-9_]*$"
+
+  # Successful responses must be 200 and return JSON
+  datamuse-success-response-json:
+    description: GET operations must return application/json for 200 responses.
+    severity: error
+    given: $.paths[*][get].responses['200'].content
+    then:
+      field: application/json
+      function: truthy
+
+  # Document the 429 response since the free tier enforces 100k/day
+  datamuse-rate-limit-response:
+    description: GET operations must document a 429 response for the 100k/day rate limit.
+    severity: warn
+    given: $.paths[*][get].responses
+    then:
+      field: "429"
+      function: truthy
+
+  # info.version must be present
+  datamuse-info-version-required:
+    description: info.version must be declared.
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+
+  # Servers must be HTTPS and point to api.datamuse.com
+  datamuse-server-https-required:
+    description: All server URLs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"

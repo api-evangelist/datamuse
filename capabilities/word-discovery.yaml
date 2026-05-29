@@ -1,0 +1,36 @@
+apiVersion: capability.naftiko.dev/v1alpha1
+kind: Capability
+metadata:
+  name: word-discovery
+  provider: datamuse
+  description: |
+    Discover words that match a combination of semantic, lexical, and contextual
+    constraints — synonyms, antonyms, hypernyms, hyponyms, triggers, and topic-
+    scoped suggestions. The general-purpose workhorse capability for vocabulary
+    tools, thesaurus features, and creative-writing assistants.
+spec:
+  uses:
+    - sharedCapability: datamuse-shared
+      operations: [getWords]
+  preconditions:
+    - description: Caller stays within the 100,000 requests/day free non-commercial quota or holds a commercial agreement.
+  workflow:
+    - step: querySemanticRelations
+      operation: getWords
+      parameters:
+        rel_syn: "{{ input.word | optional }}"
+        rel_ant: "{{ input.word | optional }}"
+        rel_trg: "{{ input.word | optional }}"
+        rel_spc: "{{ input.word | optional }}"
+        rel_gen: "{{ input.word | optional }}"
+        topics: "{{ input.topics | optional }}"
+        lc: "{{ input.leftContext | optional }}"
+        rc: "{{ input.rightContext | optional }}"
+        max: "{{ input.max | default(50) }}"
+        md: "dps"
+  outputs:
+    words: "{{ querySemanticRelations.body }}"
+    count: "{{ querySemanticRelations.body | length }}"
+  governance:
+    minPlan: free-non-commercial
+    httpsRequired: false

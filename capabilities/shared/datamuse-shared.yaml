@@ -1,0 +1,77 @@
+apiVersion: capability.naftiko.dev/v1alpha1
+kind: SharedCapability
+metadata:
+  name: datamuse-shared
+  provider: datamuse
+  description: |
+    Shared building blocks for Datamuse word-finding operations. These per-API
+    primitives are composed by higher-level workflow capabilities (word discovery,
+    rhyme and phonetics, reverse dictionary, autocomplete).
+spec:
+  baseUrl: https://api.datamuse.com
+  authentication:
+    type: none
+    notes: |
+      No API key required. Free for non-commercial use up to 100,000 requests per
+      day. Commercial use requires a paid agreement.
+  operations:
+    - id: getWords
+      method: GET
+      path: /words
+      summary: Find Words Matching Constraints
+      parameters:
+        - ml
+        - sl
+        - sp
+        - rel_jja
+        - rel_jjb
+        - rel_syn
+        - rel_trg
+        - rel_ant
+        - rel_spc
+        - rel_gen
+        - rel_com
+        - rel_par
+        - rel_bga
+        - rel_bgb
+        - rel_rhy
+        - rel_nry
+        - rel_hom
+        - rel_cns
+        - v
+        - topics
+        - lc
+        - rc
+        - max
+        - md
+        - qe
+        - ipa
+      gating:
+        plan: free-non-commercial
+        quota: 100000 requests/day shared across the free tier without an API key.
+    - id: getSuggestions
+      method: GET
+      path: /sug
+      summary: Get Autocomplete Suggestions
+      parameters:
+        - s
+        - max
+        - v
+      gating:
+        plan: free-non-commercial
+        quota: 100000 requests/day shared across the free tier without an API key.
+  responseShapes:
+    - operation: getWords
+      schema: json-schema/datamuse-word-schema.json
+    - operation: getSuggestions
+      schema: json-schema/datamuse-suggestion-schema.json
+  governance:
+    transport:
+      - https
+      - http
+    rateLimit:
+      free: 100000/day
+      commercial: negotiated
+    privacy:
+      queryLogRetention: 24h
+      tracking: aggregate request-count by category only

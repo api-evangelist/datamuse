@@ -1,0 +1,19 @@
+{
+  "name": "DatamuseSuggestion",
+  "description": "Structural overview of a Suggestion object returned by the Datamuse /sug autocomplete endpoint.",
+  "version": "1.0.0",
+  "fields": [
+    {
+      "name": "word",
+      "type": "string",
+      "required": true,
+      "description": "The suggested word or completion."
+    },
+    {
+      "name": "score",
+      "type": "integer",
+      "required": false,
+      "description": "Popularity score; higher means more likely."
+    }
+  ]
+}

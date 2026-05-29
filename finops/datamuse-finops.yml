@@ -1,0 +1,143 @@
+name: Datamuse FinOps Profile
+description: |
+  Mapping of the Datamuse commercial surface to the FinOps Framework and the
+  FOCUS cost/usage data specification. Datamuse exposes a generous free
+  non-commercial tier (100k requests/day, no key) and a custom-priced commercial
+  tier negotiated directly with the provider. The FinOps profile primarily
+  applies to the commercial tier; the free tier is documented for completeness.
+url: https://raw.githubusercontent.com/api-evangelist/datamuse/main/finops/datamuse-finops.yml
+created: '2026-05-29'
+modified: '2026-05-29'
+specificationVersion: '0.1'
+provider: datamuse
+billedThrough: Datamuse direct billing
+
+billingModel:
+  type: negotiated-contract
+  cycle: per-contract
+  annualOption: true
+  annualDiscountNotes: |
+    Datamuse does not publish standard list pricing. Annual or multi-year
+    commitments are negotiated directly with the provider.
+
+chargeCategories:
+  - category: Subscription
+    description: |
+      Recurring fee for commercial access — covers a negotiated daily / monthly
+      quota, optional custom vocabularies, and SLA terms.
+    skus:
+      - id: plan.free-non-commercial
+        name: Free Non-Commercial Tier
+        unitPrice: 0
+        unit: month
+        notes: Prohibited for commercial / customer-facing applications.
+      - id: plan.commercial
+        name: Commercial Plan
+        unitPrice: null
+        unit: per-contract
+        notes: Custom pricing — contact Datamuse via the API documentation page.
+
+  - category: Usage
+    description: |
+      Per-request or per-million-request overage charges once the contracted
+      quota is exceeded. Always negotiated rather than list-priced.
+    skus:
+      - id: overage.commercial
+        name: Commercial Overage
+        unitPrice: negotiated
+        unit: request
+        notes: Per-contract rate; pricing depends on volume, vocabulary, and SLA tier.
+
+  - category: VocabularyHosting
+    description: |
+      Optional one-time or recurring fee to host a custom domain vocabulary
+      (medical, legal, gaming, internal jargon) on Datamuse infrastructure.
+    skus:
+      - id: vocabulary.custom
+        name: Custom Vocabulary Hosting
+        unitPrice: negotiated
+        unit: vocabulary
+        notes: Per-contract — depends on vocabulary size, refresh cadence, and exclusivity.
+
+focusMapping:
+  ServiceName: Datamuse API
+  ProviderName: Datamuse
+  PublisherName: Datamuse
+  ServiceCategory: AI and Machine Learning
+  SubCategory: Natural Language Processing
+  ChargeCategory:
+    Subscription: Subscription
+    Usage: Usage
+    VocabularyHosting: Subscription
+  PricingUnit: request
+  PricingCurrency: USD
+  BillingCurrency: USD
+  ChargeFrequency:
+    Subscription: Recurring
+    Usage: Usage
+    VocabularyHosting: Recurring
+
+allocationTags:
+  - tag: capability
+    description: Capability invoked (word-discovery, rhyme-and-phonetics, reverse-dictionary, autocomplete).
+  - tag: relation
+    description: Specific lexical relation queried (rel_syn, rel_rhy, rel_trg, etc.).
+  - tag: vocabulary
+    description: Vocabulary used (en, es, or custom vocabulary id).
+  - tag: app
+    description: Internal application or product identifier consuming the API.
+  - tag: environment
+    description: Deployment environment (dev, staging, prod).
+
+unitEconomics:
+  - metric: cost-per-1000-requests
+    description: |
+      Negotiated per-contract. On the free non-commercial tier this is $0
+      (subject to the 100,000 requests/day quota and prohibition on commercial use).
+    benchmark: contact-datamuse
+
+optimization:
+  - id: cache-stable-metadata
+    description: |
+      Lexical metadata (definitions, pronunciations, syllable counts, parts of
+      speech, frequencies) is effectively static per word. Cache md=dpsrf
+      responses indefinitely to remove >80% of repeat traffic.
+    expectedSavings: high
+  - id: debounce-autocomplete
+    description: |
+      Debounce keystrokes client-side (~150ms) before calling /sug to avoid
+      issuing one request per keypress.
+    expectedSavings: high
+  - id: scope-with-max
+    description: |
+      Use the `max` parameter to bound result-set size to what the UI actually
+      renders (often 10-25), reducing bandwidth and downstream processing.
+    expectedSavings: medium
+  - id: batch-discovery-queries
+    description: |
+      For exploratory tools, batch related queries (synonyms + antonyms + triggers)
+      during a single user interaction rather than per-keystroke.
+    expectedSavings: medium
+  - id: graduate-to-commercial
+    description: |
+      Production / customer-facing workloads should move off the free tier and
+      negotiate a commercial agreement to avoid silent throttling and to obtain
+      SLA guarantees.
+    expectedSavings: risk-mitigation
+
+governance:
+  - control: classify-workload
+    description: |
+      Tag every Datamuse-consuming workload as either non-commercial (research,
+      prototype, internal tool) or commercial (customer-facing, monetized).
+      Commercial workloads must be on the commercial plan to avoid TOS violation.
+  - control: monitor-429
+    description: |
+      Alert on HTTP 429 responses; sustained 429s on a non-commercial workload
+      indicate either quota exhaustion or that the workload should be moved to
+      commercial billing.
+  - control: review-quarterly
+    description: |
+      Quarterly review of request volume by capability and allocation tag to
+      surface opportunities for caching, deduplication, and commercial-tier
+      renegotiation.

@@ -1,0 +1,57 @@
+{
+  "operationId": "getWords",
+  "request": {
+    "method": "GET",
+    "url": "https://api.datamuse.com/words",
+    "queryParameters": {
+      "ml": "ringing in the ears",
+      "max": 5,
+      "md": "dps"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "word": "tinnitus",
+        "score": 56802,
+        "numSyllables": 3,
+        "tags": ["n"],
+        "defs": [
+          "n\ta ringing or booming sensation in one or both ears; a symptom of an ear infection or a side effect of certain drugs"
+        ]
+      },
+      {
+        "word": "ringing",
+        "score": 56654,
+        "numSyllables": 2,
+        "tags": ["n", "v", "adj"],
+        "defs": [
+          "n\tthe sound of a bell ringing",
+          "v\tmake (bells) ring, often for the purposes of musical edification"
+        ]
+      },
+      {
+        "word": "eardrum",
+        "score": 53412,
+        "numSyllables": 2,
+        "tags": ["n"],
+        "defs": [
+          "n\tthe membrane in the ear that vibrates to sound"
+        ]
+      },
+      {
+        "word": "earwax",
+        "score": 52301,
+        "numSyllables": 2,
+        "tags": ["n"]
+      },
+      {
+        "word": "auditory",
+        "score": 49930,
+        "numSyllables": 4,
+        "tags": ["adj"]
+      }
+    ]
+  }
+}

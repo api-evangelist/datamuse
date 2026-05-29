@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/datamuse/json-schema/datamuse-word-schema.json",
+  "title": "Datamuse Word",
+  "description": "A word object returned by the Datamuse /words endpoint, optionally enriched with lexical metadata (definitions, parts of speech, pronunciation, syllable count, frequency).",
+  "type": "object",
+  "required": ["word"],
+  "additionalProperties": false,
+  "properties": {
+    "word": {
+      "type": "string",
+      "description": "The matched word or short phrase.",
+      "minLength": 1
+    },
+    "score": {
+      "type": "integer",
+      "description": "Relationship-strength or popularity score; relative within the result set.",
+      "minimum": 0
+    },
+    "numSyllables": {
+      "type": "integer",
+      "description": "Syllable count returned when md=s is requested.",
+      "minimum": 0
+    },
+    "tags": {
+      "type": "array",
+      "description": "Lexical tags. Bare strings denote parts of speech (n, v, adj, adv, u); pron:... entries are pronunciations; f:... entries are frequencies per million words.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "defs": {
+      "type": "array",
+      "description": "Definitions returned when md=d is requested. Each entry is prefixed by its part-of-speech code followed by a tab.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "defHeadword": {
+      "type": "string",
+      "description": "Base headword form when the matched word is an inflected variant."
+    }
+  }
+}

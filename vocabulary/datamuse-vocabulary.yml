@@ -1,0 +1,153 @@
+name: Datamuse Vocabulary
+description: |
+  Controlled vocabulary for the Datamuse word-finding API. Terms unify the
+  operational dimensions (endpoints, parameters, relations, vocabularies, plans)
+  with the capability dimensions exposed downstream (word discovery, rhyme and
+  phonetics, reverse dictionary, autocomplete).
+url: https://raw.githubusercontent.com/api-evangelist/datamuse/main/vocabulary/datamuse-vocabulary.yml
+created: '2026-05-29'
+modified: '2026-05-29'
+specificationVersion: '0.1'
+provider: datamuse
+domain: Lexical Search
+
+dimensions:
+  resources:
+    - id: word
+      label: Word
+      definition: A token returned by /words; the unit of lexical retrieval, optionally enriched with metadata.
+    - id: suggestion
+      label: Suggestion
+      definition: A token returned by /sug as an autocomplete candidate, ranked by popularity.
+    - id: relation
+      label: Relation
+      definition: A typed lexical relationship between two words (synonym, antonym, rhyme, holonym, etc.).
+    - id: vocabulary
+      label: Vocabulary
+      definition: A language-scoped wordlist (English `en`, Spanish `es`, or a hosted custom vocabulary).
+    - id: pronunciation
+      label: Pronunciation
+      definition: A phonetic transcription returned in Arpabet (default) or IPA (with ipa=1).
+    - id: definition
+      label: Definition
+      definition: A short gloss of a word returned via md=d, prefixed by a part-of-speech code.
+
+  endpoints:
+    - id: getWords
+      label: Find Words Matching Constraints
+      method: GET
+      path: /words
+    - id: getSuggestions
+      label: Get Autocomplete Suggestions
+      method: GET
+      path: /sug
+
+  constraints:
+    - id: ml
+      label: Means Like
+      family: semantic
+    - id: sl
+      label: Sounds Like
+      family: phonetic
+    - id: sp
+      label: Spelled Like
+      family: orthographic
+    - id: rel_syn
+      label: Synonyms
+      family: relation
+    - id: rel_ant
+      label: Antonyms
+      family: relation
+    - id: rel_trg
+      label: Triggers
+      family: relation
+    - id: rel_spc
+      label: Hypernyms
+      family: relation
+    - id: rel_gen
+      label: Hyponyms
+      family: relation
+    - id: rel_com
+      label: Holonyms
+      family: relation
+    - id: rel_par
+      label: Meronyms
+      family: relation
+    - id: rel_jja
+      label: Adjective-Modified Nouns
+      family: relation
+    - id: rel_jjb
+      label: Noun-Modifying Adjectives
+      family: relation
+    - id: rel_bga
+      label: Frequent Followers
+      family: relation
+    - id: rel_bgb
+      label: Frequent Predecessors
+      family: relation
+    - id: rel_rhy
+      label: Perfect Rhymes
+      family: phonetic-relation
+    - id: rel_nry
+      label: Near Rhymes
+      family: phonetic-relation
+    - id: rel_hom
+      label: Homophones
+      family: phonetic-relation
+    - id: rel_cns
+      label: Consonant Matches
+      family: phonetic-relation
+
+  rankingHints:
+    - id: topics
+      label: Topics
+    - id: lc
+      label: Left Context
+    - id: rc
+      label: Right Context
+
+  resultControls:
+    - id: max
+      label: Maximum Results
+    - id: md
+      label: Metadata Flags
+    - id: qe
+      label: Query Echo
+    - id: ipa
+      label: IPA Pronunciation
+
+  metadataFlags:
+    - id: d
+      label: Definitions
+    - id: p
+      label: Parts of Speech
+    - id: s
+      label: Syllable Count
+    - id: r
+      label: Pronunciation
+    - id: f
+      label: Frequency
+
+  vocabularies:
+    - id: en
+      label: English (550k terms, default)
+    - id: es
+      label: Spanish (500k terms)
+    - id: custom
+      label: Custom Vocabulary (commercial)
+
+  plans:
+    - id: free-non-commercial
+      label: Free Non-Commercial
+    - id: commercial
+      label: Commercial
+
+  capabilities:
+    - id: word-discovery
+      label: Word Discovery
+    - id: rhyme-and-phonetics
+      label: Rhyme and Phonetics
+    - id: reverse-dictionary
+      label: Reverse Dictionary
+    - id: autocomplete
+      label: Autocomplete
