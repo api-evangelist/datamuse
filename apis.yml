@@ -1,16 +1,13 @@
 aid: datamuse
 name: Datamuse
 description: >-
-  Datamuse operates a word-finding query engine and lexical search service for developers,
-  educators, and creative-writing applications. The Datamuse API exposes a /words endpoint
-  that finds words matching a rich combination of semantic, phonetic, orthographic, and
-  vocabulary constraints (means-like, sounds-like, spelled-like, synonyms, antonyms,
-  hypernyms, meronyms, triggers, rhymes, homophones, and more) plus a /sug autocomplete
-  endpoint. Free for non-commercial use up to 100,000 requests per day with no API key
-  required; commercial use, custom vocabularies, and higher rate limits are available
-  via a paid commercial agreement. Datamuse also runs OneLook, OneLook Thesaurus,
-  RhymeZone, Rimar.io, and CivicSearch — consumer-facing word search tools built on the
-  same lexical infrastructure.
+  Datamuse operates a word-finding query engine and lexical search service for developers, educators, and
+  creative-writing applications. The Datamuse API exposes a /words endpoint that finds words matching a rich combination
+  of semantic, phonetic, orthographic, and vocabulary constraints (means-like, sounds-like, spelled-like, synonyms,
+  antonyms, hypernyms, meronyms, triggers, rhymes, homophones, and more) plus a /sug autocomplete endpoint. Free for
+  non-commercial use up to 100,000 requests per day with no API key required; commercial use, custom vocabularies, and
+  higher rate limits are available via a paid commercial agreement. Datamuse also runs OneLook, OneLook Thesaurus,
+  RhymeZone, Rimar.io, and CivicSearch — consumer-facing word search tools built on the same lexical infrastructure.
 url: https://www.datamuse.com/api/
 specificationVersion: '0.20'
 created: '2026-05-28'
@@ -44,13 +41,11 @@ apis:
   - aid: datamuse:datamuse-api
     name: Datamuse API
     description: >-
-      The Datamuse REST API exposes two operations covering word-finding (/words) and
-      autocomplete suggestions (/sug). The /words endpoint accepts a rich combination of
-      constraint parameters — semantic (ml, rel_syn, rel_ant, rel_trg, rel_spc, rel_gen,
-      rel_com, rel_par, rel_jja, rel_jjb), phonetic (sl, rel_rhy, rel_nry, rel_hom,
-      rel_cns), orthographic (sp with wildcards), and vocabulary (v=en|es) — plus
-      ranking hints (topics, lc, rc) and result controls (max, md, qe, ipa). No
-      authentication required for free non-commercial use up to 100k requests/day.
+      The Datamuse REST API exposes two operations covering word-finding (/words) and autocomplete suggestions (/sug).
+      The /words endpoint accepts a rich combination of constraint parameters — semantic (ml, rel_syn, rel_ant, rel_trg,
+      rel_spc, rel_gen, rel_com, rel_par, rel_jja, rel_jjb), phonetic (sl, rel_rhy, rel_nry, rel_hom, rel_cns),
+      orthographic (sp with wildcards), and vocabulary (v=en|es) — plus ranking hints (topics, lc, rc) and result
+      controls (max, md, qe, ipa). No authentication required for free non-commercial use up to 100k requests/day.
     humanURL: https://www.datamuse.com/api/
     baseURL: https://api.datamuse.com
     tags:
@@ -108,16 +103,6 @@ common:
     url: rules/datamuse-rules.yml
   - type: Vocabulary
     url: vocabulary/datamuse-vocabulary.yml
-  - type: NaftikoCapability
-    url: capabilities/shared/datamuse-shared.yaml
-  - type: NaftikoCapability
-    url: capabilities/word-discovery.yaml
-  - type: NaftikoCapability
-    url: capabilities/rhyme-and-phonetics.yaml
-  - type: NaftikoCapability
-    url: capabilities/reverse-dictionary.yaml
-  - type: NaftikoCapability
-    url: capabilities/autocomplete.yaml
   - type: Plans
     url: plans/datamuse-plans-pricing.yml
   - type: RateLimits
@@ -163,19 +148,31 @@ common:
       - name: Spelled Like (sp)
         description: Orthographic constraint with wildcard pattern matching (* for any chars, ? for a single char).
       - name: Predefined Relations (rel_*)
-        description: Twelve lexical relations including synonyms, antonyms, hypernyms, hyponyms, holonyms, meronyms, triggers, frequent followers/predecessors, rhymes, near-rhymes, homophones, and consonant matches.
+        description: >-
+          Twelve lexical relations including synonyms, antonyms, hypernyms, hyponyms, holonyms, meronyms, triggers,
+          frequent followers/predecessors, rhymes, near-rhymes, homophones, and consonant matches.
       - name: Context Ranking
-        description: Topics, left-context (lc), and right-context (rc) parameters skew results toward a document theme or surrounding words.
+        description: >-
+          Topics, left-context (lc), and right-context (rc) parameters skew results toward a document theme or
+          surrounding words.
       - name: Lexical Metadata (md)
-        description: Optional metadata flags add definitions, parts of speech, syllable counts, pronunciations, and corpus frequency to each word.
+        description: >-
+          Optional metadata flags add definitions, parts of speech, syllable counts, pronunciations, and corpus
+          frequency to each word.
       - name: Pronunciation Formats
         description: Default Arpabet pronunciations or IPA via the ipa flag, drawing on the CMU Pronouncing Dictionary.
       - name: Multilingual Vocabularies
-        description: Default English (550k terms) and Spanish (500k terms) vocabularies; custom domain vocabularies available on request.
+        description: >-
+          Default English (550k terms) and Spanish (500k terms) vocabularies; custom domain vocabularies available on
+          request.
       - name: Autocomplete (/sug)
-        description: Intelligent prefix suggestions with spelling correction and semantic fallback when exact matches are unavailable.
+        description: >-
+          Intelligent prefix suggestions with spelling correction and semantic fallback when exact matches are
+          unavailable.
       - name: No API Key Required
-        description: Free non-commercial use up to 100,000 requests per day without an account or API token; HTTPS and HTTP both supported.
+        description: >-
+          Free non-commercial use up to 100,000 requests per day without an account or API token; HTTPS and HTTP both
+          supported.
       - name: Query Echo (qe)
         description: Prepends the result list with a record describing the query string, useful for one-shot word-metadata lookups.
   - type: UseCases
@@ -183,9 +180,13 @@ common:
       - name: Vocabulary Building Apps
         description: Power flashcards, quizzes, and language-learning apps with synonyms, antonyms, and related-word lookups.
       - name: Creative Writing Tools
-        description: Drive rhyme finders, thesaurus add-ins, and reverse-dictionary lookups for poetry, songwriting, and copywriting.
+        description: >-
+          Drive rhyme finders, thesaurus add-ins, and reverse-dictionary lookups for poetry, songwriting, and
+          copywriting.
       - name: Word Games and Puzzles
-        description: Generate clues, fill patterns with sp wildcards, and validate word lists for crosswords, hangman, and word ladders.
+        description: >-
+          Generate clues, fill patterns with sp wildcards, and validate word lists for crosswords, hangman, and word
+          ladders.
       - name: Autocomplete and Type-Ahead
         description: Provide intelligent prefix suggestions with spelling correction in search bars and form fields.
       - name: Educational Software
@@ -199,7 +200,9 @@ common:
   - type: Integrations
     data:
       - name: OneLook
-        description: Datamuse's flagship word search engine indexing 10M+ words across 1000+ dictionaries; built on the same backend.
+        description: >-
+          Datamuse's flagship word search engine indexing 10M+ words across 1000+ dictionaries; built on the same
+          backend.
       - name: OneLook Thesaurus
         description: Reverse-dictionary and thesaurus product available on web, as a Google Docs add-on, and as an iOS/Mac app.
       - name: RhymeZone
@@ -221,15 +224,23 @@ common:
       - name: Obsidian Wordy Plugin
         description: Community plugin embedding Datamuse-powered thesaurus and reverse-dictionary directly into Obsidian.
       - name: Model Context Protocol Servers
-        description: Multiple community MCP servers (lacausecrypto/datamuse-mcp, pipeworx-io/mcp-datamuse, bhayanak/datamuse-mcp-server) expose the API to LLM agents.
+        description: >-
+          Multiple community MCP servers (lacausecrypto/datamuse-mcp, pipeworx-io/mcp-datamuse,
+          bhayanak/datamuse-mcp-server) expose the API to LLM agents.
   - type: Solutions
     data:
       - name: Free Non-Commercial Tier
-        description: Up to 100,000 requests per day with no API key, no signup, suitable for prototypes, hobby projects, research, and non-commercial education.
+        description: >-
+          Up to 100,000 requests per day with no API key, no signup, suitable for prototypes, hobby projects, research,
+          and non-commercial education.
       - name: Commercial Plan
-        description: Custom contract for production traffic in customer-facing applications, higher quotas, custom vocabularies, and SLA — pricing on request.
+        description: >-
+          Custom contract for production traffic in customer-facing applications, higher quotas, custom vocabularies,
+          and SLA — pricing on request.
       - name: Custom Vocabulary Hosting
-        description: Domain-specific term lists (medical, legal, gaming, internal jargon) hosted on Datamuse infrastructure with all standard relations.
+        description: >-
+          Domain-specific term lists (medical, legal, gaming, internal jargon) hosted on Datamuse infrastructure with
+          all standard relations.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
