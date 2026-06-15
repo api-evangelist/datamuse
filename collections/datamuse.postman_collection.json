@@ -1,0 +1,829 @@
+{
+  "item": [
+    {
+      "id": "3b59e127-cb5c-40d5-9ea4-8b1f044ee408",
+      "name": "Words",
+      "description": {
+        "content": "Word-finding queries combining semantic, phonetic, orthographic, and vocabulary constraints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "89d8bda6-7776-4371-81da-3ee3fb057a16",
+          "name": "Find Words Matching Constraints",
+          "request": {
+            "name": "Find Words Matching Constraints",
+            "description": {
+              "content": "Find words matching any combination of constraints. Constraints may be combined\nfreely; results are ranked by relationship strength for semantic constraints,\notherwise by frequency. Optional metadata flags add definitions, parts of speech,\nsyllable counts, pronunciations, and corpus frequency to each result.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "words"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ml",
+                  "value": "<string>",
+                  "description": "Means like — semantic constraint requiring results with meaning related to the input string (reverse-dictionary lookup)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sl",
+                  "value": "<string>",
+                  "description": "Sounds like — phonetic constraint requiring results pronounced similarly to the input."
+                },
+                {
+                  "disabled": false,
+                  "key": "sp",
+                  "value": "<string>",
+                  "description": "Spelled like — orthographic constraint with wildcards (`*` any chars, `?` single char). URL-encode the value."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_jja",
+                  "value": "<string>",
+                  "description": "Popular nouns modified by the given adjective, per Google Books Ngrams."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_jjb",
+                  "value": "<string>",
+                  "description": "Popular adjectives modifying the given noun, per Google Books Ngrams."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_syn",
+                  "value": "<string>",
+                  "description": "Synonyms (WordNet)."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_trg",
+                  "value": "<string>",
+                  "description": "Triggers — words statistically associated with the query word in the same piece of text."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_ant",
+                  "value": "<string>",
+                  "description": "Antonyms (WordNet)."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_spc",
+                  "value": "<string>",
+                  "description": "Direct hypernyms (\"kind of\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_gen",
+                  "value": "<string>",
+                  "description": "Direct hyponyms (\"more general than\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_com",
+                  "value": "<string>",
+                  "description": "Direct holonyms (\"comprises\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_par",
+                  "value": "<string>",
+                  "description": "Direct meronyms (\"part of\")."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_bga",
+                  "value": "<string>",
+                  "description": "Frequent followers — words that frequently appear immediately after the query word."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_bgb",
+                  "value": "<string>",
+                  "description": "Frequent predecessors — words that frequently appear immediately before the query word."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_rhy",
+                  "value": "<string>",
+                  "description": "Perfect rhymes."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_nry",
+                  "value": "<string>",
+                  "description": "Approximate (near) rhymes."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_hom",
+                  "value": "<string>",
+                  "description": "Homophones — words pronounced the same."
+                },
+                {
+                  "disabled": false,
+                  "key": "rel_cns",
+                  "value": "<string>",
+                  "description": "Consonant matches — words with the same consonant skeleton."
+                },
+                {
+                  "disabled": false,
+                  "key": "v",
+                  "value": "en",
+                  "description": "Vocabulary identifier. Default English (`en`, 550k terms) or `es` for Spanish (500k terms). Custom vocabularies available on request."
+                },
+                {
+                  "disabled": false,
+                  "key": "topics",
+                  "value": "<string>",
+                  "description": "Up to five space- or comma-separated topic words that skew results toward the indicated document theme."
+                },
+                {
+                  "disabled": false,
+                  "key": "lc",
+                  "value": "<string>",
+                  "description": "Left context — a single word appearing immediately to the left of the target word."
+                },
+                {
+                  "disabled": false,
+                  "key": "rc",
+                  "value": "<string>",
+                  "description": "Right context — a single word appearing immediately to the right of the target word."
+                },
+                {
+                  "disabled": false,
+                  "key": "max",
+                  "value": "100",
+                  "description": "Maximum number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "md",
+                  "value": "<string>",
+                  "description": "Metadata flags — a string composed of single-letter codes requesting lexical\nmetadata for each result:\n  * `d` — definitions (and `defHeadword` for inflected forms)\n  * `p` — parts of speech (n, v, adj, adv, u)\n  * `s` — syllable count (`numSyllables`)\n  * `r` — pronunciation (Arpabet; combine with `ipa=1` for IPA)\n  * `f` — corpus frequency (per million words, Google Books Ngrams)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "qe",
+                  "value": "<string>",
+                  "description": "Query echo — prepend a result describing the query string from the named parameter, useful for one-shot metadata lookups."
+                },
+                {
+                  "disabled": false,
+                  "key": "ipa",
+                  "value": "<integer>",
+                  "description": "When set to `1` and pronunciation metadata is requested, return IPA-format pronunciations instead of Arpabet."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe6b8673-1b38-466d-8c6e-e9dc41f147f3",
+              "name": "A ranked list of matching words.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "words"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ml",
+                      "value": "ringing in the ears"
+                    },
+                    {
+                      "key": "sl",
+                      "value": "jirraf"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "hipp*"
+                    },
+                    {
+                      "key": "rel_jja",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_jjb",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_syn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_trg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_ant",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_spc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_gen",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_com",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_par",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_bga",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_bgb",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_rhy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_nry",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_hom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_cns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "v",
+                      "value": "en"
+                    },
+                    {
+                      "key": "topics",
+                      "value": "technology computers"
+                    },
+                    {
+                      "key": "lc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "max",
+                      "value": "100"
+                    },
+                    {
+                      "key": "md",
+                      "value": "dpsrf"
+                    },
+                    {
+                      "key": "qe",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ipa",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"word\": \"giraffe\",\n    \"score\": 1075,\n    \"numSyllables\": 2,\n    \"tags\": [\n      \"n\",\n      \"pron:JH ER0 AE1 F\",\n      \"f:0.422043\"\n    ],\n    \"defs\": [\n      \"n\\ttall spotted East African mammal with a long neck\"\n    ],\n    \"defHeadword\": \"string\"\n  },\n  {\n    \"word\": \"giraffe\",\n    \"score\": 1075,\n    \"numSyllables\": 2,\n    \"tags\": [\n      \"n\",\n      \"pron:JH ER0 AE1 F\",\n      \"f:0.422043\"\n    ],\n    \"defs\": [\n      \"n\\ttall spotted East African mammal with a long neck\"\n    ],\n    \"defHeadword\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78097f39-dd57-4cc1-bf25-154b2de1d173",
+              "name": "Malformed request (unknown parameter or invalid value).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "words"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ml",
+                      "value": "ringing in the ears"
+                    },
+                    {
+                      "key": "sl",
+                      "value": "jirraf"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "hipp*"
+                    },
+                    {
+                      "key": "rel_jja",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_jjb",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_syn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_trg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_ant",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_spc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_gen",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_com",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_par",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_bga",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_bgb",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_rhy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_nry",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_hom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_cns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "v",
+                      "value": "en"
+                    },
+                    {
+                      "key": "topics",
+                      "value": "technology computers"
+                    },
+                    {
+                      "key": "lc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "max",
+                      "value": "100"
+                    },
+                    {
+                      "key": "md",
+                      "value": "dpsrf"
+                    },
+                    {
+                      "key": "qe",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ipa",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e323e8dc-cd8d-4ff1-8445-01246a09704c",
+              "name": "Too many requests — exceeded the 100,000 requests/day free tier limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "words"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ml",
+                      "value": "ringing in the ears"
+                    },
+                    {
+                      "key": "sl",
+                      "value": "jirraf"
+                    },
+                    {
+                      "key": "sp",
+                      "value": "hipp*"
+                    },
+                    {
+                      "key": "rel_jja",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_jjb",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_syn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_trg",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_ant",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_spc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_gen",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_com",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_par",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_bga",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_bgb",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_rhy",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_nry",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_hom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rel_cns",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "v",
+                      "value": "en"
+                    },
+                    {
+                      "key": "topics",
+                      "value": "technology computers"
+                    },
+                    {
+                      "key": "lc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "max",
+                      "value": "100"
+                    },
+                    {
+                      "key": "md",
+                      "value": "dpsrf"
+                    },
+                    {
+                      "key": "qe",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ipa",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "99032b55-b00e-439c-94ba-9f5c2da6cd56",
+      "name": "Suggestions",
+      "description": {
+        "content": "Autocomplete suggestions with spelling correction and semantic fallback.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fec9dde3-3058-4c47-bf91-da566ced3fe3",
+          "name": "Get Autocomplete Suggestions",
+          "request": {
+            "name": "Get Autocomplete Suggestions",
+            "description": {
+              "content": "Return intelligent autocomplete suggestions for a partially-entered search string.\nSorted by popularity; the response may include spelling corrections or semantically\nsimilar terms when an exact prefix match is unavailable.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "s",
+                  "value": "<string>",
+                  "description": "(Required) Partially-entered search string for which to return suggestions."
+                },
+                {
+                  "disabled": false,
+                  "key": "max",
+                  "value": "10",
+                  "description": "Maximum number of suggestions to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "v",
+                  "value": "en",
+                  "description": "Vocabulary identifier. Default English (`en`, 550k terms) or `es` for Spanish (500k terms). Custom vocabularies available on request."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba777ba7-440e-42ad-9218-d9e97cbfb477",
+              "name": "A ranked list of suggested words.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "s",
+                      "value": "rawn"
+                    },
+                    {
+                      "key": "max",
+                      "value": "10"
+                    },
+                    {
+                      "key": "v",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"word\": \"prawn\",\n    \"score\": 1500\n  },\n  {\n    \"word\": \"prawn\",\n    \"score\": 1500\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b611c50-9442-430f-b195-0d8c9eb76c01",
+              "name": "Malformed request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "s",
+                      "value": "rawn"
+                    },
+                    {
+                      "key": "max",
+                      "value": "10"
+                    },
+                    {
+                      "key": "v",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18743e88-83a9-468f-b33a-6ae8ea14fad6",
+              "name": "Too many requests — exceeded the 100,000 requests/day free tier limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "s",
+                      "value": "rawn"
+                    },
+                    {
+                      "key": "max",
+                      "value": "10"
+                    },
+                    {
+                      "key": "v",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.datamuse.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c34363eb-3660-4001-af61-0e2b8517228f",
+    "name": "Datamuse API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Datamuse API is a word-finding query engine for developers. It returns lists of\nwords (and optional metadata) matching a combination of semantic, phonetic, orthographic,\nand vocabulary constraints, plus context ranking hints. The API powers OneLook,\nOneLook Thesaurus, RhymeZone, Rimar.io, and CivicSearch.\n\nTwo operations are exposed:\n\n* `GET /words` — find words matching a rich set of constraint and ranking parameters.\n* `GET /sug` — return autocomplete suggestions for a partially-entered string.\n\nThe service is free for non-commercial use up to 100,000 requests per day with no\nAPI key required. Commercial use, higher rate limits, and custom vocabularies are\navailable via a paid commercial agreement.\n\n\nContact Support:\n Name: Datamuse API Support",
+      "type": "text/plain"
+    }
+  }
+}
