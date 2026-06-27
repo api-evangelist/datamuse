@@ -67,11 +67,11 @@ apis:
         url: json-structure/datamuse-word-structure.json
       - type: JSONStructure
         url: json-structure/datamuse-suggestion-structure.json
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/datamuse-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/datamuse-getwords-example.json
-      - type: Example
+      - type: Examples
         url: examples/datamuse-getsuggestions-example.json
       - type: RateLimits
         url: rate-limits/datamuse-rate-limits.yml
@@ -111,23 +111,23 @@ common:
     url: finops/datamuse-finops.yml
   - type: PublicAPIsListing
     url: https://github.com/public-apis/public-apis
-  - type: SDK
+  - type: SDKs
     url: https://github.com/sjblair/Datamuse4J
-  - type: SDK
+  - type: SDKs
     url: https://github.com/gmarmstrong/python-datamuse
-  - type: SDK
+  - type: SDKs
     url: https://github.com/ansteh/datamuse
-  - type: SDK
+  - type: SDKs
     url: https://github.com/ezefranca/datamuse-swift
-  - type: SDK
+  - type: SDKs
     url: https://github.com/owenvoke/datamuse-php-api-wrapper
-  - type: SDK
+  - type: SDKs
     url: https://github.com/kostaspt/go-datamuse
-  - type: SDK
+  - type: SDKs
     url: https://github.com/slogemann1/datamuse-api-wrapper
-  - type: SDK
+  - type: SDKs
     url: https://github.com/benhess02/DatamuseDotNet
-  - type: SDK
+  - type: SDKs
     url: https://github.com/mosegontar/rubymuse
   - type: Tools
     url: https://github.com/lacausecrypto/datamuse-mcp
