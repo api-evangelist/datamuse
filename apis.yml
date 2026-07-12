@@ -85,6 +85,8 @@ apis:
         endpoint: /sug
         summary: Get Autocomplete Suggestions
 common:
+  - type: DomainSecurity
+    url: security/datamuse-domain-security.yml
   - type: Website
     url: https://www.datamuse.com/
   - type: Documentation
