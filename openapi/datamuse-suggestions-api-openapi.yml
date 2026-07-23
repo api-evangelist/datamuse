@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: Datamuse Suggestions API
+  description: 'The Datamuse API is a word-finding query engine for developers. It returns lists of
+
+    words (and optional metadata) matching a combination of semantic, phonetic, orthographic,
+
+    and vocabulary constraints, plus context ranking hints. The API powers OneLook,
+
+    OneLook Thesaurus, RhymeZone, Rimar.io, and CivicSearch.
+
+
+    Two operations are exposed:
+
+
+    * `GET /words` — find words matching a rich set of constraint and ranking parameters.
+
+    * `GET /sug` — return autocomplete suggestions for a partially-entered string.
+
+
+    The service is free for non-commercial use up to 100,000 requests per day with no
+
+    API key required. Commercial use, higher rate limits, and custom vocabularies are
+
+    available via a paid commercial agreement.
+
+    '
+  version: 1.1.0
+  termsOfService: https://www.datamuse.com/api/
+  contact:
+    name: Datamuse API Support
+    url: https://www.datamuse.com/api/
+  license:
+    name: Datamuse Free Non-Commercial Use
+    url: https://www.datamuse.com/api/
+servers:
+- url: https://api.datamuse.com
+  description: Datamuse production API
+tags:
+- name: Suggestions
+  description: Autocomplete suggestions with spelling correction and semantic fallback.
+paths:
+  /sug:
+    get:
+      summary: Get Autocomplete Suggestions
+      description: 'Return intelligent autocomplete suggestions for a partially-entered search string.
+
+        Sorted by popularity; the response may include spelling corrections or semantically
+
+        similar terms when an exact prefix match is unavailable.
+
+        '
+      operationId: getSuggestions
+      tags:
+      - Suggestions
+      parameters:
+      - $ref: '#/components/parameters/SuggestionPrefix'
+      - $ref: '#/components/parameters/SuggestionMax'
+      - $ref: '#/components/parameters/Vocabulary'
+      responses:
+        '200':
+          description: A ranked list of suggested words.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Suggestion'
+        '400':
+          description: Malformed request.
+        '429':
+          description: Too many requests — exceeded the 100,000 requests/day free tier limit.
+components:
+  parameters:
+    Vocabulary:
+      name: v
+      in: query
+      description: Vocabulary identifier. Default English (`en`, 550k terms) or `es` for Spanish (500k terms). Custom vocabularies available on request.
+      schema:
+        type: string
+        enum:
+        - en
+        - es
+        default: en
+    SuggestionPrefix:
+      name: s
+      in: query
+      description: Partially-entered search string for which to return suggestions.
+      required: true
+      schema:
+        type: string
+      example: rawn
+    SuggestionMax:
+      name: max
+      in: query
+      description: Maximum number of suggestions to return.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 10
+  schemas:
+    Suggestion:
+      type: object
+      description: A suggestion returned from the /sug endpoint.
+      required:
+      - word
+      properties:
+        word:
+          type: string
+          description: The suggested completion (may include a spelling correction or semantic fallback).
+          example: prawn
+        score:
+          type: integer
+          description: Popularity score; higher means more likely.
+          example: 1500
