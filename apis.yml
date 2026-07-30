@@ -9,6 +9,18 @@ description: >-
   higher rate limits are available via a paid commercial agreement. Datamuse also runs OneLook, OneLook Thesaurus,
   RhymeZone, Rimar.io, and CivicSearch — consumer-facing word search tools built on the same lexical infrastructure.
 url: https://www.datamuse.com/api/
+accessModel:
+  pricing: freemium
+  onboarding: open
+  trial: false
+  try_now: true
+  public: true
+  label: Freemium · Open access
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-05-28'
 modified: '2026-05-29'
@@ -17,7 +29,7 @@ x-category: Open Source Projects
 x-type: company
 x-tier: 3
 x-tier-reason: bulk-registered-from-public-apis
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/datamuse.png
 tags:
   - Word Finding
   - Lexical Search
@@ -38,52 +50,71 @@ tags:
   - Open Source Projects
   - Public APIs
 apis:
-  - aid: datamuse:datamuse-api
-    name: Datamuse API
-    description: >-
-      The Datamuse REST API exposes two operations covering word-finding (/words) and autocomplete suggestions (/sug).
-      The /words endpoint accepts a rich combination of constraint parameters — semantic (ml, rel_syn, rel_ant, rel_trg,
-      rel_spc, rel_gen, rel_com, rel_par, rel_jja, rel_jjb), phonetic (sl, rel_rhy, rel_nry, rel_hom, rel_cns),
-      orthographic (sp with wildcards), and vocabulary (v=en|es) — plus ranking hints (topics, lc, rc) and result
-      controls (max, md, qe, ipa). No authentication required for free non-commercial use up to 100k requests/day.
-    humanURL: https://www.datamuse.com/api/
-    baseURL: https://api.datamuse.com
-    tags:
-      - Word Finding
-      - Lexical Search
-      - Natural Language
-    properties:
-      - type: Documentation
-        url: https://www.datamuse.com/api/
-      - type: APIReference
-        url: https://www.datamuse.com/api/
-      - type: OpenAPI
-        url: openapi/datamuse-openapi.yml
-      - type: JSONSchema
-        url: json-schema/datamuse-word-schema.json
-      - type: JSONSchema
-        url: json-schema/datamuse-suggestion-schema.json
-      - type: JSONStructure
-        url: json-structure/datamuse-word-structure.json
-      - type: JSONStructure
-        url: json-structure/datamuse-suggestion-structure.json
-      - type: JSONLD
-        url: json-ld/datamuse-context.jsonld
-      - type: Examples
-        url: examples/datamuse-getwords-example.json
-      - type: Examples
-        url: examples/datamuse-getsuggestions-example.json
-      - type: RateLimits
-        url: rate-limits/datamuse-rate-limits.yml
-      - type: Pricing
-        url: plans/datamuse-plans-pricing.yml
-    operations:
-      - method: GET
-        endpoint: /words
-        summary: Find Words Matching Constraints
-      - method: GET
-        endpoint: /sug
-        summary: Get Autocomplete Suggestions
+- aid: datamuse:datamuse-suggestions-api
+  name: Datamuse Suggestions API
+  description: Autocomplete suggestions with spelling correction and semantic fallback.
+  humanURL: https://www.datamuse.com/api/
+  baseURL: https://api.datamuse.com
+  tags:
+  - Suggestions
+  properties:
+  - type: OpenAPI
+    url: openapi/datamuse-suggestions-api-openapi.yml
+  - type: Documentation
+    url: https://www.datamuse.com/api/
+  - type: APIReference
+    url: https://www.datamuse.com/api/
+  - type: JSONSchema
+    url: json-schema/datamuse-word-schema.json
+  - type: JSONSchema
+    url: json-schema/datamuse-suggestion-schema.json
+  - type: JSONStructure
+    url: json-structure/datamuse-word-structure.json
+  - type: JSONStructure
+    url: json-structure/datamuse-suggestion-structure.json
+  - type: JSONLD
+    url: json-ld/datamuse-context.jsonld
+  - type: Examples
+    url: examples/datamuse-getwords-example.json
+  - type: Examples
+    url: examples/datamuse-getsuggestions-example.json
+  - type: RateLimits
+    url: rate-limits/datamuse-rate-limits.yml
+  - type: Pricing
+    url: plans/datamuse-plans-pricing.yml
+- aid: datamuse:datamuse-words-api
+  name: Datamuse Words API
+  description: >-
+    Word-finding queries combining semantic, phonetic, orthographic, and vocabulary constraints.
+  humanURL: https://www.datamuse.com/api/
+  baseURL: https://api.datamuse.com
+  tags:
+  - Words
+  properties:
+  - type: OpenAPI
+    url: openapi/datamuse-words-api-openapi.yml
+  - type: Documentation
+    url: https://www.datamuse.com/api/
+  - type: APIReference
+    url: https://www.datamuse.com/api/
+  - type: JSONSchema
+    url: json-schema/datamuse-word-schema.json
+  - type: JSONSchema
+    url: json-schema/datamuse-suggestion-schema.json
+  - type: JSONStructure
+    url: json-structure/datamuse-word-structure.json
+  - type: JSONStructure
+    url: json-structure/datamuse-suggestion-structure.json
+  - type: JSONLD
+    url: json-ld/datamuse-context.jsonld
+  - type: Examples
+    url: examples/datamuse-getwords-example.json
+  - type: Examples
+    url: examples/datamuse-getsuggestions-example.json
+  - type: RateLimits
+    url: rate-limits/datamuse-rate-limits.yml
+  - type: Pricing
+    url: plans/datamuse-plans-pricing.yml
 common:
   - type: AgenticAccess
     url: agentic-access/datamuse-agentic-access.yml
