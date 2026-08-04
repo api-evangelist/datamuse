@@ -1,0 +1,16 @@
+{
+  "provider": "datamuse",
+  "sources": [
+    "datamuse-suggestions-api-openapi.yml",
+    "datamuse-words-api-openapi.yml"
+  ],
+  "outputs": [
+    "datamuse-suggestions-api-openapi.yml",
+    "datamuse-words-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
