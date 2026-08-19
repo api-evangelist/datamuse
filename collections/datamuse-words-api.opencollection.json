@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Datamuse Suggestions Words API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Words",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find Words Matching Constraints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.datamuse.com/words",
+            "params": [
+              {
+                "name": "ml",
+                "value": "ringing in the ears",
+                "type": "query",
+                "description": "Means like — semantic constraint requiring results with meaning related to the input string (reverse-dictionary lookup)."
+              },
+              {
+                "name": "sl",
+                "value": "jirraf",
+                "type": "query",
+                "description": "Sounds like — phonetic constraint requiring results pronounced similarly to the input."
+              },
+              {
+                "name": "sp",
+                "value": "hipp*",
+                "type": "query",
+                "description": "Spelled like — orthographic constraint with wildcards (`*` any chars, `?` single char). URL-encode the value."
+              },
+              {
+                "name": "rel_jja",
+                "value": "",
+                "type": "query",
+                "description": "Popular nouns modified by the given adjective, per Google Books Ngrams."
+              },
+              {
+                "name": "rel_jjb",
+                "value": "",
+                "type": "query",
+                "description": "Popular adjectives modifying the given noun, per Google Books Ngrams."
+              },
+              {
+                "name": "rel_syn",
+                "value": "",
+                "type": "query",
+                "description": "Synonyms (WordNet)."
+              },
+              {
+                "name": "rel_trg",
+                "value": "",
+                "type": "query",
+                "description": "Triggers — words statistically associated with the query word in the same piece of text."
+              },
+              {
+                "name": "rel_ant",
+                "value": "",
+                "type": "query",
+                "description": "Antonyms (WordNet)."
+              },
+              {
+                "name": "rel_spc",
+                "value": "",
+                "type": "query",
+                "description": "Direct hypernyms (\"kind of\")."
+              },
+              {
+                "name": "rel_gen",
+                "value": "",
+                "type": "query",
+                "description": "Direct hyponyms (\"more general than\")."
+              },
+              {
+                "name": "rel_com",
+                "value": "",
+                "type": "query",
+                "description": "Direct holonyms (\"comprises\")."
+              },
+              {
+                "name": "rel_par",
+                "value": "",
+                "type": "query",
+                "description": "Direct meronyms (\"part of\")."
+              },
+              {
+                "name": "rel_bga",
+                "value": "",
+                "type": "query",
+                "description": "Frequent followers — words that frequently appear immediately after the query word."
+              },
+              {
+                "name": "rel_bgb",
+                "value": "",
+                "type": "query",
+                "description": "Frequent predecessors — words that frequently appear immediately before the query word."
+              },
+              {
+                "name": "rel_rhy",
+                "value": "",
+                "type": "query",
+                "description": "Perfect rhymes."
+              },
+              {
+                "name": "rel_nry",
+                "value": "",
+                "type": "query",
+                "description": "Approximate (near) rhymes."
+              },
+              {
+                "name": "rel_hom",
+                "value": "",
+                "type": "query",
+                "description": "Homophones — words pronounced the same."
+              },
+              {
+                "name": "rel_cns",
+                "value": "",
+                "type": "query",
+                "description": "Consonant matches — words with the same consonant skeleton."
+              },
+              {
+                "name": "v",
+                "value": "",
+                "type": "query",
+                "description": "Vocabulary identifier. Default English (`en`, 550k terms) or `es` for Spanish (500k terms). Custom vocabularies available on request."
+              },
+              {
+                "name": "topics",
+                "value": "technology computers",
+                "type": "query",
+                "description": "Up to five space- or comma-separated topic words that skew results toward the indicated document theme."
+              },
+              {
+                "name": "lc",
+                "value": "",
+                "type": "query",
+                "description": "Left context — a single word appearing immediately to the left of the target word."
+              },
+              {
+                "name": "rc",
+                "value": "",
+                "type": "query",
+                "description": "Right context — a single word appearing immediately to the right of the target word."
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return."
+              },
+              {
+                "name": "md",
+                "value": "dpsrf",
+                "type": "query",
+                "description": "Metadata flags — a string composed of single-letter codes requesting lexical\nmetadata for each result:\n  * `d` — definitions (and `defHeadword` for inflected forms)\n  * `p` — parts of speech (n, v, adj, adv, u)\n  * `s` — syllable count (`numSyllables`)\n  * `r` — pronunciation (Arpabet; combine with `ipa=1` for IPA)\n  * `f` — corpus frequency (per million words, Google Books Ngrams)\n"
+              },
+              {
+                "name": "qe",
+                "value": "",
+                "type": "query",
+                "description": "Query echo — prepend a result describing the query string from the named parameter, useful for one-shot metadata lookups."
+              },
+              {
+                "name": "ipa",
+                "value": "",
+                "type": "query",
+                "description": "When set to `1` and pronunciation metadata is requested, return IPA-format pronunciations instead of Arpabet."
+              }
+            ]
+          },
+          "docs": "Find words matching any combination of constraints. Constraints may be combined\nfreely; results are ranked by relationship strength for semantic constraints,\notherwise by frequency. Optional metadata flags add definitions, parts of speech,\nsyllable counts, pronunciations, and corpus frequency to each result.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

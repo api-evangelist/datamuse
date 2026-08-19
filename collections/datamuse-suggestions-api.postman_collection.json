@@ -1,0 +1,218 @@
+{
+  "item": [
+    {
+      "id": "c3a6f736-8be8-44c3-ab32-3b44c2afd0e9",
+      "name": "Suggestions",
+      "description": {
+        "content": "Autocomplete suggestions with spelling correction and semantic fallback.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "39c4c7e3-598d-45a4-90f5-7b597077653c",
+          "name": "Get Autocomplete Suggestions",
+          "request": {
+            "name": "Get Autocomplete Suggestions",
+            "description": {
+              "content": "Return intelligent autocomplete suggestions for a partially-entered search string.\nSorted by popularity; the response may include spelling corrections or semantically\nsimilar terms when an exact prefix match is unavailable.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "s",
+                  "value": "<string>",
+                  "description": "(Required) Partially-entered search string for which to return suggestions."
+                },
+                {
+                  "disabled": false,
+                  "key": "max",
+                  "value": "10",
+                  "description": "Maximum number of suggestions to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "v",
+                  "value": "en",
+                  "description": "Vocabulary identifier. Default English (`en`, 550k terms) or `es` for Spanish (500k terms). Custom vocabularies available on request."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65d4e99c-42a4-43c5-b740-467f27a2548d",
+              "name": "A ranked list of suggested words.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "s",
+                      "value": "rawn"
+                    },
+                    {
+                      "key": "max",
+                      "value": "10"
+                    },
+                    {
+                      "key": "v",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"word\": \"prawn\",\n    \"score\": 1500\n  },\n  {\n    \"word\": \"prawn\",\n    \"score\": 1500\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4328a91-27b7-496e-b381-75b7c34a6899",
+              "name": "Malformed request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "s",
+                      "value": "rawn"
+                    },
+                    {
+                      "key": "max",
+                      "value": "10"
+                    },
+                    {
+                      "key": "v",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03c2a39a-fb91-4f4c-8e20-3c5ef4686029",
+              "name": "Too many requests — exceeded the 100,000 requests/day free tier limit.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "s",
+                      "value": "rawn"
+                    },
+                    {
+                      "key": "max",
+                      "value": "10"
+                    },
+                    {
+                      "key": "v",
+                      "value": "en"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.datamuse.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6cb50b18-61b9-4521-908e-6545a73da972",
+    "name": "Datamuse Suggestions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Datamuse API is a word-finding query engine for developers. It returns lists of\nwords (and optional metadata) matching a combination of semantic, phonetic, orthographic,\nand vocabulary constraints, plus context ranking hints. The API powers OneLook,\nOneLook Thesaurus, RhymeZone, Rimar.io, and CivicSearch.\n\nTwo operations are exposed:\n\n* `GET /words` — find words matching a rich set of constraint and ranking parameters.\n* `GET /sug` — return autocomplete suggestions for a partially-entered string.\n\nThe service is free for non-commercial use up to 100,000 requests per day with no\nAPI key required. Commercial use, higher rate limits, and custom vocabularies are\navailable via a paid commercial agreement.\n\n\nContact Support:\n Name: Datamuse API Support",
+      "type": "text/plain"
+    }
+  }
+}

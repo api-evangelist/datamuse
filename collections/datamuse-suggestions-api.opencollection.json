@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Datamuse Suggestions API",
+    "version": "1.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Suggestions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Autocomplete Suggestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.datamuse.com/sug",
+            "params": [
+              {
+                "name": "s",
+                "value": "rawn",
+                "type": "query",
+                "description": "Partially-entered search string for which to return suggestions."
+              },
+              {
+                "name": "max",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of suggestions to return."
+              },
+              {
+                "name": "v",
+                "value": "",
+                "type": "query",
+                "description": "Vocabulary identifier. Default English (`en`, 550k terms) or `es` for Spanish (500k terms). Custom vocabularies available on request."
+              }
+            ]
+          },
+          "docs": "Return intelligent autocomplete suggestions for a partially-entered search string.\nSorted by popularity; the response may include spelling corrections or semantically\nsimilar terms when an exact prefix match is unavailable.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
