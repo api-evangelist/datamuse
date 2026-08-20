@@ -33,6 +33,25 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/datamuse.p
 tags:
   - Word Finding
   - Lexical Search
+  - Natural-Language
+  - Vocabulary
+  - Synonyms
+  - Antonyms
+  - Rhymes
+  - Phonetics
+  - Semantic Search
+  - Reverse Dictionary
+  - Autocomplete
+  - Wordplay
+  - Creative Writing
+  - Vocabulary Apps
+  - Word Games
+  - Linguistics
+  - Open Source Projects
+  - Public APIs
+tags_raw:
+  - Word Finding
+  - Lexical Search
   - Natural Language
   - Vocabulary
   - Synonyms
@@ -89,6 +108,8 @@ apis:
   humanURL: https://www.datamuse.com/api/
   baseURL: https://api.datamuse.com
   tags:
+  - Word
+  tags_raw:
   - Words
   properties:
   - type: OpenAPI
