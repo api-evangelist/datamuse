@@ -45,7 +45,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/datamuse.p
 tags:
   - Word Finding
   - Lexical Search
-  - Natural-Language
+  - Natural Language
   - Vocabulary
   - Synonyms
   - Antonyms
@@ -120,7 +120,7 @@ apis:
   humanURL: https://www.datamuse.com/api/
   baseURL: https://api.datamuse.com
   tags:
-  - Word
+  - Words
   tags_raw:
   - Words
   properties:
