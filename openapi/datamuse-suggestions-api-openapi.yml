@@ -1,30 +1,7 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Datamuse Suggestions API
-  description: 'The Datamuse API is a word-finding query engine for developers. It returns lists of
-
-    words (and optional metadata) matching a combination of semantic, phonetic, orthographic,
-
-    and vocabulary constraints, plus context ranking hints. The API powers OneLook,
-
-    OneLook Thesaurus, RhymeZone, Rimar.io, and CivicSearch.
-
-
-    Two operations are exposed:
-
-
-    * `GET /words` — find words matching a rich set of constraint and ranking parameters.
-
-    * `GET /sug` — return autocomplete suggestions for a partially-entered string.
-
-
-    The service is free for non-commercial use up to 100,000 requests per day with no
-
-    API key required. Commercial use, higher rate limits, and custom vocabularies are
-
-    available via a paid commercial agreement.
-
-    '
+  description: The Datamuse API is a word-finding query engine for developers.
   version: 1.1.0
   termsOfService: https://www.datamuse.com/api/
   contact:
@@ -47,9 +24,7 @@ paths:
 
         Sorted by popularity; the response may include spelling corrections or semantically
 
-        similar terms when an exact prefix match is unavailable.
-
-        '
+        similar terms when an exact prefix match is unavailable.'
       operationId: getSuggestions
       tags:
       - Suggestions
@@ -72,6 +47,15 @@ paths:
           description: Too many requests — exceeded the 100,000 requests/day free tier limit.
 components:
   parameters:
+    SuggestionMax:
+      name: max
+      in: query
+      description: Maximum number of suggestions to return.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 10
     Vocabulary:
       name: v
       in: query
@@ -90,15 +74,6 @@ components:
       schema:
         type: string
       example: rawn
-    SuggestionMax:
-      name: max
-      in: query
-      description: Maximum number of suggestions to return.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 1000
-        default: 10
   schemas:
     Suggestion:
       type: object
