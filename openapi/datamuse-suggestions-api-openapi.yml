@@ -47,6 +47,15 @@ paths:
           description: Too many requests — exceeded the 100,000 requests/day free tier limit.
 components:
   parameters:
+    SuggestionMax:
+      name: max
+      in: query
+      description: Maximum number of suggestions to return.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 10
     SuggestionPrefix:
       name: s
       in: query
@@ -65,15 +74,6 @@ components:
         - en
         - es
         default: en
-    SuggestionMax:
-      name: max
-      in: query
-      description: Maximum number of suggestions to return.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 1000
-        default: 10
   schemas:
     Suggestion:
       type: object
