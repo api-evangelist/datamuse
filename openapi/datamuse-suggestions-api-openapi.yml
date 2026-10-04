@@ -46,34 +46,6 @@ paths:
         '429':
           description: Too many requests — exceeded the 100,000 requests/day free tier limit.
 components:
-  parameters:
-    SuggestionMax:
-      name: max
-      in: query
-      description: Maximum number of suggestions to return.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 1000
-        default: 10
-    SuggestionPrefix:
-      name: s
-      in: query
-      description: Partially-entered search string for which to return suggestions.
-      required: true
-      schema:
-        type: string
-      example: rawn
-    Vocabulary:
-      name: v
-      in: query
-      description: Vocabulary identifier. Default English (`en`, 550k terms) or `es` for Spanish (500k terms). Custom vocabularies available on request.
-      schema:
-        type: string
-        enum:
-        - en
-        - es
-        default: en
   schemas:
     Suggestion:
       type: object
@@ -89,3 +61,31 @@ components:
           type: integer
           description: Popularity score; higher means more likely.
           example: 1500
+  parameters:
+    SuggestionPrefix:
+      name: s
+      in: query
+      description: Partially-entered search string for which to return suggestions.
+      required: true
+      schema:
+        type: string
+      example: rawn
+    SuggestionMax:
+      name: max
+      in: query
+      description: Maximum number of suggestions to return.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 10
+    Vocabulary:
+      name: v
+      in: query
+      description: Vocabulary identifier. Default English (`en`, 550k terms) or `es` for Spanish (500k terms). Custom vocabularies available on request.
+      schema:
+        type: string
+        enum:
+        - en
+        - es
+        default: en
