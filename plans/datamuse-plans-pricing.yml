@@ -121,3 +121,22 @@ contact:
   notes: |
     To arrange commercial use, custom vocabularies, or elevated rate limits,
     contact Datamuse via the link on their API documentation page.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  units: []
+  plans:
+  - name: Free Non-Commercial
+    access: other
+    model: metered
+    model_how: derived
+    units: []
+    periods: []
+  - name: Commercial
+    access: other
+    model: metered
+    model_how: derived
+    units: []
+    periods: []
