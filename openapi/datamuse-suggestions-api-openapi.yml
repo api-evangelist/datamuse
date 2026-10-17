@@ -46,30 +46,7 @@ paths:
         '429':
           description: Too many requests — exceeded the 100,000 requests/day free tier limit.
 components:
-  schemas:
-    Suggestion:
-      type: object
-      description: A suggestion returned from the /sug endpoint.
-      required:
-      - word
-      properties:
-        word:
-          type: string
-          description: The suggested completion (may include a spelling correction or semantic fallback).
-          example: prawn
-        score:
-          type: integer
-          description: Popularity score; higher means more likely.
-          example: 1500
   parameters:
-    SuggestionPrefix:
-      name: s
-      in: query
-      description: Partially-entered search string for which to return suggestions.
-      required: true
-      schema:
-        type: string
-      example: rawn
     SuggestionMax:
       name: max
       in: query
@@ -89,3 +66,26 @@ components:
         - en
         - es
         default: en
+    SuggestionPrefix:
+      name: s
+      in: query
+      description: Partially-entered search string for which to return suggestions.
+      required: true
+      schema:
+        type: string
+      example: rawn
+  schemas:
+    Suggestion:
+      type: object
+      description: A suggestion returned from the /sug endpoint.
+      required:
+      - word
+      properties:
+        word:
+          type: string
+          description: The suggested completion (may include a spelling correction or semantic fallback).
+          example: prawn
+        score:
+          type: integer
+          description: Popularity score; higher means more likely.
+          example: 1500

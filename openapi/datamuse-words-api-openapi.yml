@@ -72,26 +72,58 @@ paths:
           description: Too many requests — exceeded the 100,000 requests/day free tier limit.
 components:
   parameters:
-    Topics:
-      name: topics
+    RelPar:
+      name: rel_par
       in: query
-      description: Up to five space- or comma-separated topic words that skew results toward the indicated document theme.
+      description: Direct meronyms ("part of").
       schema:
         type: string
-      example: technology computers
+    MeansLike:
+      name: ml
+      in: query
+      description: Means like — semantic constraint requiring results with meaning related to the input string (reverse-dictionary lookup).
+      schema:
+        type: string
+      example: ringing in the ears
+    Ipa:
+      name: ipa
+      in: query
+      description: When set to `1` and pronunciation metadata is requested, return IPA-format pronunciations instead of Arpabet.
+      schema:
+        type: integer
+        enum:
+        - 0
+        - 1
+    RelJja:
+      name: rel_jja
+      in: query
+      description: Popular nouns modified by the given adjective, per Google Books Ngrams.
+      schema:
+        type: string
+    RelAnt:
+      name: rel_ant
+      in: query
+      description: Antonyms (WordNet).
+      schema:
+        type: string
+    RelRhy:
+      name: rel_rhy
+      in: query
+      description: Perfect rhymes.
+      schema:
+        type: string
     RelHom:
       name: rel_hom
       in: query
       description: Homophones — words pronounced the same.
       schema:
         type: string
-    Metadata:
-      name: md
+    QueryEcho:
+      name: qe
       in: query
-      description: "Metadata flags — a string composed of single-letter codes requesting lexical\nmetadata for each result:\n  * `d` — definitions (and `defHeadword` for inflected forms)\n  * `p` — parts of speech (n, v, adj, adv, u)\n  * `s` — syllable count (`numSyllables`)\n  * `r` — pronunciation (Arpabet; combine with `ipa=1` for IPA)\n  * `f` — corpus frequency (per million words, Google Books Ngrams)\n"
+      description: Query echo — prepend a result describing the query string from the named parameter, useful for one-shot metadata lookups.
       schema:
         type: string
-      example: dpsrf
     SoundsLike:
       name: sl
       in: query
@@ -99,22 +131,10 @@ components:
       schema:
         type: string
       example: jirraf
-    QueryEcho:
-      name: qe
+    RightContext:
+      name: rc
       in: query
-      description: Query echo — prepend a result describing the query string from the named parameter, useful for one-shot metadata lookups.
-      schema:
-        type: string
-    RelJja:
-      name: rel_jja
-      in: query
-      description: Popular nouns modified by the given adjective, per Google Books Ngrams.
-      schema:
-        type: string
-    RelGen:
-      name: rel_gen
-      in: query
-      description: Direct hyponyms ("more general than").
+      description: Right context — a single word appearing immediately to the right of the target word.
       schema:
         type: string
     SpelledLike:
@@ -124,6 +144,31 @@ components:
       schema:
         type: string
       example: hipp*
+    RelSpc:
+      name: rel_spc
+      in: query
+      description: Direct hypernyms ("kind of").
+      schema:
+        type: string
+    Metadata:
+      name: md
+      in: query
+      description: "Metadata flags — a string composed of single-letter codes requesting lexical\nmetadata for each result:\n  * `d` — definitions (and `defHeadword` for inflected forms)\n  * `p` — parts of speech (n, v, adj, adv, u)\n  * `s` — syllable count (`numSyllables`)\n  * `r` — pronunciation (Arpabet; combine with `ipa=1` for IPA)\n  * `f` — corpus frequency (per million words, Google Books Ngrams)\n"
+      schema:
+        type: string
+      example: dpsrf
+    RelCom:
+      name: rel_com
+      in: query
+      description: Direct holonyms ("comprises").
+      schema:
+        type: string
+    RelSyn:
+      name: rel_syn
+      in: query
+      description: Synonyms (WordNet).
+      schema:
+        type: string
     Vocabulary:
       name: v
       in: query
@@ -134,22 +179,41 @@ components:
         - en
         - es
         default: en
-    LeftContext:
-      name: lc
-      in: query
-      description: Left context — a single word appearing immediately to the left of the target word.
-      schema:
-        type: string
-    RelPar:
-      name: rel_par
-      in: query
-      description: Direct meronyms ("part of").
-      schema:
-        type: string
     RelBga:
       name: rel_bga
       in: query
       description: Frequent followers — words that frequently appear immediately after the query word.
+      schema:
+        type: string
+    RelBgb:
+      name: rel_bgb
+      in: query
+      description: Frequent predecessors — words that frequently appear immediately before the query word.
+      schema:
+        type: string
+    RelGen:
+      name: rel_gen
+      in: query
+      description: Direct hyponyms ("more general than").
+      schema:
+        type: string
+    RelCns:
+      name: rel_cns
+      in: query
+      description: Consonant matches — words with the same consonant skeleton.
+      schema:
+        type: string
+    Topics:
+      name: topics
+      in: query
+      description: Up to five space- or comma-separated topic words that skew results toward the indicated document theme.
+      schema:
+        type: string
+      example: technology computers
+    RelTrg:
+      name: rel_trg
+      in: query
+      description: Triggers — words statistically associated with the query word in the same piece of text.
       schema:
         type: string
     RelJjb:
@@ -158,40 +222,6 @@ components:
       description: Popular adjectives modifying the given noun, per Google Books Ngrams.
       schema:
         type: string
-    RightContext:
-      name: rc
-      in: query
-      description: Right context — a single word appearing immediately to the right of the target word.
-      schema:
-        type: string
-    RelNry:
-      name: rel_nry
-      in: query
-      description: Approximate (near) rhymes.
-      schema:
-        type: string
-    Ipa:
-      name: ipa
-      in: query
-      description: When set to `1` and pronunciation metadata is requested, return IPA-format pronunciations instead of Arpabet.
-      schema:
-        type: integer
-        enum:
-        - 0
-        - 1
-    RelCns:
-      name: rel_cns
-      in: query
-      description: Consonant matches — words with the same consonant skeleton.
-      schema:
-        type: string
-    MeansLike:
-      name: ml
-      in: query
-      description: Means like — semantic constraint requiring results with meaning related to the input string (reverse-dictionary lookup).
-      schema:
-        type: string
-      example: ringing in the ears
     Max:
       name: max
       in: query
@@ -201,46 +231,16 @@ components:
         minimum: 1
         maximum: 1000
         default: 100
-    RelTrg:
-      name: rel_trg
+    LeftContext:
+      name: lc
       in: query
-      description: Triggers — words statistically associated with the query word in the same piece of text.
+      description: Left context — a single word appearing immediately to the left of the target word.
       schema:
         type: string
-    RelSpc:
-      name: rel_spc
+    RelNry:
+      name: rel_nry
       in: query
-      description: Direct hypernyms ("kind of").
-      schema:
-        type: string
-    RelAnt:
-      name: rel_ant
-      in: query
-      description: Antonyms (WordNet).
-      schema:
-        type: string
-    RelBgb:
-      name: rel_bgb
-      in: query
-      description: Frequent predecessors — words that frequently appear immediately before the query word.
-      schema:
-        type: string
-    RelRhy:
-      name: rel_rhy
-      in: query
-      description: Perfect rhymes.
-      schema:
-        type: string
-    RelSyn:
-      name: rel_syn
-      in: query
-      description: Synonyms (WordNet).
-      schema:
-        type: string
-    RelCom:
-      name: rel_com
-      in: query
-      description: Direct holonyms ("comprises").
+      description: Approximate (near) rhymes.
       schema:
         type: string
   schemas:
