@@ -81,16 +81,19 @@ tags_raw:
   - Open Source Projects
   - Public APIs
 apis:
-- aid: datamuse:datamuse-suggestions-api
-  name: Datamuse Suggestions API
-  description: Autocomplete suggestions with spelling correction and semantic fallback.
+- aid: datamuse:datamuse-words-api
+  name: Datamuse Words API
+  description: >-
+    Word-finding queries combining semantic, phonetic, orthographic, and vocabulary constraints.
   humanURL: https://www.datamuse.com/api/
   baseURL: https://api.datamuse.com
   tags:
-  - Suggestions
+  - Word
+  tags_raw:
+  - Words
   properties:
   - type: OpenAPI
-    url: openapi/datamuse-suggestions-api-openapi.yml
+    url: openapi/datamuse-words-api-openapi.yml
   - type: Documentation
     url: https://www.datamuse.com/api/
   - type: APIReference
@@ -113,19 +116,16 @@ apis:
     url: rate-limits/datamuse-rate-limits.yml
   - type: Pricing
     url: plans/datamuse-plans-pricing.yml
-- aid: datamuse:datamuse-words-api
-  name: Datamuse Words API
-  description: >-
-    Word-finding queries combining semantic, phonetic, orthographic, and vocabulary constraints.
+- aid: datamuse:datamuse-pets-api
+  name: Datamuse Pets API
+  description: The Pets API from Datamuse — 1 operation(s) for pets.
   humanURL: https://www.datamuse.com/api/
   baseURL: https://api.datamuse.com
   tags:
-  - Word
-  tags_raw:
-  - Words
+  - Pets
   properties:
   - type: OpenAPI
-    url: openapi/datamuse-words-api-openapi.yml
+    url: openapi/datamuse-pets-api-openapi.yml
   - type: Documentation
     url: https://www.datamuse.com/api/
   - type: APIReference

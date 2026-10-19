@@ -1,10 +1,10 @@
 {
   "provider": "datamuse",
   "sources": [
-    "_original/datamuse-openapi.yml"
+    "_original/datamuse-openapi.json"
   ],
   "outputs": [
-    "datamuse-suggestions-api-openapi.yml",
+    "datamuse-pets-api-openapi.yml",
     "datamuse-words-api-openapi.yml"
   ],
   "archived": [],
@@ -12,11 +12,14 @@
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "datamuse-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "datamuse-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "datamuse-openapi.json: tagged paths GET /words -> Words",
+    "datamuse-openapi.json: tagged paths POST /words -> Words",
+    "datamuse-openapi.json: tagged paths GET /pets/{id} -> Pets",
+    "datamuse-openapi.json: tagged paths DELETE /pets/{id} -> Pets",
+    "datamuse-openapi.json: declared missing tag: Pets",
+    "datamuse-openapi.json: declared missing tag: Words",
+    "apis.yml register: written (+1 apis, 2 total)"
   ],
-  "skipped": [
-    "datamuse-suggestions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "datamuse-words-api-openapi.yml: previously refined output, superseded by openapi/_original/"
-  ]
+  "skipped": []
 }
