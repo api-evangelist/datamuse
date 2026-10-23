@@ -149,6 +149,8 @@ apis:
   - type: Pricing
     url: plans/datamuse-plans-pricing.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/datamuse/overview
   - url: https://www.datamuse.com/blog/
     type: Blog
   - type: AgenticAccess
