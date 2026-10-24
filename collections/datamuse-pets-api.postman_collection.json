@@ -1,0 +1,280 @@
+{
+  "info": {
+    "_postman_id": "828533d1-c45a-4fdb-8a9b-4c4bb5053385",
+    "name": "Datamuse Pets API",
+    "description": "A word-finding tool for developers\n\nContact Support:\n Name: Datamuse API Team",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:55:38.000Z",
+    "updatedAt": "2026-10-22T02:55:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-828533d1-c45a-4fdb-8a9b-4c4bb5053385"
+  },
+  "item": [
+    {
+      "name": "pets",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Find pet by id",
+              "id": "974fb5ee-bac0-4050-a048-9b02559f78f7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pets/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "56d41f5e-fa8e-4b47-83a6-b7cf09e31b78",
+                      "key": "id",
+                      "value": "<long>",
+                      "description": "(Required) ID of pet to fetch"
+                    }
+                  ]
+                },
+                "description": "Returns a user based on a single ID, if the user does not have access to the pet"
+              },
+              "response": [
+                {
+                  "id": "2fbb2b00-5bd8-406b-956c-d54dcb0e2da8",
+                  "name": "pet response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<long>\",\n  \"name\": \"<string>\",\n  \"tag\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T02:55:39.000Z",
+                  "updatedAt": "2026-10-22T02:55:39.000Z",
+                  "uid": "35240-2fbb2b00-5bd8-406b-956c-d54dcb0e2da8"
+                },
+                {
+                  "id": "c68938da-1623-460c-bcc5-c64c9b3a105e",
+                  "name": "unexpected error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T02:55:39.000Z",
+                  "updatedAt": "2026-10-22T02:55:39.000Z",
+                  "uid": "35240-c68938da-1623-460c-bcc5-c64c9b3a105e"
+                }
+              ],
+              "createdAt": "2026-10-22T02:55:39.000Z",
+              "updatedAt": "2026-10-22T02:55:39.000Z",
+              "uid": "35240-974fb5ee-bac0-4050-a048-9b02559f78f7"
+            },
+            {
+              "name": "Delete pet",
+              "id": "d215b081-dbfa-4e82-84ea-463ffc03ad0d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/pets/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "pets",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "94d6adcc-1d4e-4036-9ebc-891733a65680",
+                      "key": "id",
+                      "value": "<long>",
+                      "description": "(Required) ID of pet to delete"
+                    }
+                  ]
+                },
+                "description": "deletes a single pet based on the ID supplied"
+              },
+              "response": [
+                {
+                  "id": "7af6c1e4-071d-48a9-8164-3cb065d7c4f4",
+                  "name": "pet deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:55:39.000Z",
+                  "updatedAt": "2026-10-22T02:55:39.000Z",
+                  "uid": "35240-7af6c1e4-071d-48a9-8164-3cb065d7c4f4"
+                },
+                {
+                  "id": "174e64e8-8630-4b9f-b393-f881701fe8b1",
+                  "name": "unexpected error",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/pets/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "pets",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T02:55:39.000Z",
+                  "updatedAt": "2026-10-22T02:55:39.000Z",
+                  "uid": "35240-174e64e8-8630-4b9f-b393-f881701fe8b1"
+                }
+              ],
+              "createdAt": "2026-10-22T02:55:39.000Z",
+              "updatedAt": "2026-10-22T02:55:39.000Z",
+              "uid": "35240-d215b081-dbfa-4e82-84ea-463ffc03ad0d"
+            }
+          ],
+          "id": "effb198d-38a5-43aa-957a-ac5e6da586dc",
+          "createdAt": "2026-10-22T02:55:39.000Z",
+          "updatedAt": "2026-10-22T02:55:39.000Z",
+          "uid": "35240-effb198d-38a5-43aa-957a-ac5e6da586dc"
+        }
+      ],
+      "id": "ba492bf2-ea2e-42b3-a885-fdcf8f63e7ac",
+      "createdAt": "2026-10-22T02:55:39.000Z",
+      "updatedAt": "2026-10-22T02:55:39.000Z",
+      "uid": "35240-ba492bf2-ea2e-42b3-a885-fdcf8f63e7ac"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://api.datamuse.com"
+    }
+  ]
+}
