@@ -1,4 +1,4 @@
-# Datamuse (datamuse)
+# Datamuse
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,101 +66,163 @@
 
 Datamuse operates a word-finding query engine and lexical search service for developers, educators, and creative-writing applications. The Datamuse API exposes a /words endpoint that finds words matching a rich combination of semantic, phonetic, orthographic, and vocabulary constraints (means-like, sounds-like, spelled-like, synonyms, antonyms, hypernyms, meronyms, triggers, rhymes, homophones, and more) plus a /sug autocomplete endpoint. Free for non-commercial use up to 100,000 requests per day with no API key required; commercial use, custom vocabularies, and higher rate limits are available via a paid commercial agreement. Datamuse also runs OneLook, OneLook Thesaurus, RhymeZone, Rimar.io, and CivicSearch — consumer-facing word search tools built on the same lexical infrastructure.
 
-**APIs.json:** [https://www.datamuse.com/api/](https://www.datamuse.com/api/)
+**Areas:** Word Finding · Lexical Search · Natural-Language · Vocabulary · Synonyms · Antonyms · Rhymes · Phonetics · Semantic Search · Reverse Dictionary · Autocomplete · Wordplay
 
-## Tags
+## Datamuse on APIs.io
 
-- Word Finding
-- Lexical Search
-- Natural Language
-- Vocabulary
-- Synonyms
-- Antonyms
-- Rhymes
-- Phonetics
-- Semantic Search
-- Reverse Dictionary
-- Autocomplete
-- Wordplay
-- Creative Writing
-- Vocabulary Apps
-- Word Games
-- Linguistics
-- Open Source Projects
-- Public APIs
+Everything profiled for Datamuse is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/datamuse/](https://apis.io/providers/datamuse/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (2)
 
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-29
+- [Datamuse Suggestions API](https://apis.io/apis/datamuse/datamuse-suggestions-api/) — Autocomplete suggestions with spelling correction and semantic fallback.
+- [Datamuse Words API](https://apis.io/apis/datamuse/datamuse-words-api/) — Word-finding queries combining semantic, phonetic, orthographic, and vocabulary constraints.
 
-## APIs
+### Published properties
 
-### Datamuse API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The Datamuse REST API exposes two operations covering word-finding (/words) and autocomplete suggestions (/sug). The /words endpoint accepts a rich combination of constraint parameters — semantic (ml, rel_syn, rel_ant, rel_trg, rel_spc, rel_gen, rel_com, rel_par, rel_jja, rel_jjb), phonetic (sl, rel_rhy, rel_nry, rel_hom, rel_cns), orthographic (sp with wildcards), and vocabulary (v=en|es) — plus ranking hints (topics, lc, rc) and result controls (max, md, qe, ipa). No authentication required for free non-commercial use up to 100k requests/day.
+#### Agentic access (1)
 
-- **Human URL:** [https://www.datamuse.com/api/](https://www.datamuse.com/api/)
-- **Base URL:** `https://api.datamuse.com`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Datamuse Agentic Access](https://apis.io/agentic-access/datamuse/datamuse-agentic-access/)
 
-- Word Finding
-- Lexical Search
-- Natural Language
+#### JSON Schema (2)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://www.datamuse.com/api/)
-- [API Reference](https://www.datamuse.com/api/)
-- [OpenAPI](openapi/datamuse-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/datamuse.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/datamuse.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/datamuse-word-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/datamuse-suggestion-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/datamuse-word-structure.json)
-- [JSON Structure](json-structure/datamuse-suggestion-structure.json)
-- [J S O N- L D](json-ld/datamuse-context.jsonld)
-- [Example](examples/datamuse-getwords-example.json)
-- [Example](examples/datamuse-getsuggestions-example.json)
-- [Rate Limits](rate-limits/datamuse-rate-limits.yml)
-- [Pricing](plans/datamuse-plans-pricing.yml)
+- [Datamuse Suggestion](https://apis.io/schemas/datamuse/datamuse-suggestion/)
+- [Datamuse Word](https://apis.io/schemas/datamuse/datamuse-word/)
 
-## Common Properties
+#### JSON Structure (2)
+
+Data models expressed in JSON Structure.
+
+- [Datamuse Suggestion Structure](https://apis.io/json-structure/datamuse/datamuse-suggestion-structure/)
+- [Datamuse Word Structure](https://apis.io/json-structure/datamuse/datamuse-word-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Datamuse Context](https://apis.io/jsonld/datamuse/datamuse-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Datamuse Vocabulary](https://apis.io/vocabularies/datamuse/datamuse-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Datamuse Getsuggestions Example](https://apis.io/examples/datamuse/datamuse-getsuggestions-example/)
+- [Datamuse Getwords Example](https://apis.io/examples/datamuse/datamuse-getwords-example/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Datamuse API](https://apis.io/collections/datamuse/open-datamuse/)
+- [Datamuse Suggestions API](https://apis.io/collections/datamuse/open-datamuse-suggestions-api/)
+- [Datamuse Suggestions Words API](https://apis.io/collections/datamuse/open-datamuse-words-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Datamuse — jsonschema rules](https://apis.io/rules/datamuse/datamuse-jsonschema-spectral-rules/)
+- [Datamuse API Rules](https://apis.io/rules/datamuse/datamuse-rules/)
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Datamuse Domain Security](https://apis.io/security/datamuse/datamuse-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Datamuse Plans Pricing](https://apis.io/plans/datamuse/datamuse-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Datamuse Rate Limits](https://apis.io/rate-limits/datamuse/datamuse-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Datamuse Finops](https://apis.io/finops/datamuse/datamuse-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.datamuse.com/)
 - [Documentation](https://www.datamuse.com/api/)
-- [API Reference](https://www.datamuse.com/api/)
+- [API reference](https://www.datamuse.com/api/)
 - [Pricing](https://www.datamuse.com/api/)
-- [Terms of Service](https://www.datamuse.com/api/)
-- [Privacy Policy](https://www.datamuse.com/api/)
 - [Support](https://www.datamuse.com/api/)
-- [Spectral Rules](rules/datamuse-rules.yml)
-- [Vocabulary](vocabulary/datamuse-vocabulary.yml)
-- [Plans](plans/datamuse-plans-pricing.yml)
-- [Rate Limits](rate-limits/datamuse-rate-limits.yml)
-- [Fin Ops](finops/datamuse-finops.yml)
-- [Public APIs Listing](https://github.com/public-apis/public-apis)
-- [SDK](https://github.com/sjblair/Datamuse4J)
-- [SDK](https://github.com/gmarmstrong/python-datamuse)
-- [SDK](https://github.com/ansteh/datamuse)
-- [SDK](https://github.com/ezefranca/datamuse-swift)
-- [SDK](https://github.com/owenvoke/datamuse-php-api-wrapper)
-- [SDK](https://github.com/kostaspt/go-datamuse)
-- [SDK](https://github.com/slogemann1/datamuse-api-wrapper)
-- [SDK](https://github.com/benhess02/DatamuseDotNet)
-- [SDK](https://github.com/mosegontar/rubymuse)
-- [Tools](https://github.com/lacausecrypto/datamuse-mcp)
-- [Tools](https://github.com/pipeworx-io/mcp-datamuse)
-- [Tools](https://github.com/bhayanak/datamuse-mcp-server)
-- [Tools](https://github.com/pipeworx-io/mcp-words)
-- [Tools](https://github.com/Eyalm321/multilingual-dictionary-mcp)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [Blog](https://www.datamuse.com/blog/)
+- [Terms of service](https://www.datamuse.com/api/)
+- [Privacy policy](https://www.datamuse.com/api/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 40.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 54.1 |
+| Contract governance | 27.3 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 41.7 |
+| Access clarity | 36.8 |
+
+**Agent readiness 24.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 18.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/datamuse/](https://apis.io/providers/datamuse/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Datamuse: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/datamuse/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
